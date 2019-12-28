@@ -50,12 +50,15 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .navbar {
   height: 65px;
 }
 img {
   height: 65px;
   padding: 0.5rem;
+}
+span.icon {
+  margin-right: 0.5rem !important;
 }
 </style>

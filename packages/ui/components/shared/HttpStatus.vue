@@ -30,7 +30,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped lang="scss">
 span {
   padding: 0.1rem 0.2rem;
   border-radius: 0.2rem;

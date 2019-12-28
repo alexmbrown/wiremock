@@ -1,5 +1,5 @@
 <template lang="pug">
-  n-link(:to="'/mapping/' + mapping.id")
+  n-link(:to="'mapping/' + mapping.id")
     strong.has-text-grey-dark.is-size-6 {{mapping.path}}
     .is-clearfix
       .is-pulled-left
