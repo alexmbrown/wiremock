@@ -1,5 +1,5 @@
 <template lang="pug">
-  b-navbar.is-light
+  b-navbar.is-light.has-shadow
     template(slot="start")
       b-navbar-dropdown
         b-navbar-item(slot="label")
@@ -52,6 +52,10 @@ export default {
 
 <style lang="scss">
 .navbar {
-  height: 64px;
+  height: 65px;
+}
+img {
+  height: 65px;
+  padding: 0.5rem;
 }
 </style>

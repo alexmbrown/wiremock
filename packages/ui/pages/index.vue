@@ -1,9 +1,0 @@
-<template lang="pug">
-  div
-    h1 ROOT
-    NuxtChild
-</template>
-
-<script>
-export default {}
-</script>

@@ -1,7 +1,7 @@
 <template lang="pug">
   div
     .is-size-4.has-text-grey-dark
-        .indicator(:class="statusIndicator()")
+        .indicator(:class="healthIndicator()")
         | {{server.name}}
     .has-text-grey.is-size-7 {{server.address}}
 </template>
@@ -15,7 +15,7 @@ export default {
     }
   },
   methods: {
-    statusIndicator() {
+    healthIndicator() {
       const server = this.$props.server
       if (server) {
         if (server.isHealthy) {

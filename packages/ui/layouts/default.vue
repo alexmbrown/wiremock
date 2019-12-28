@@ -1,5 +1,5 @@
 <template lang="pug">
-  div
+  div.is-full-height
     Header
     Nuxt
 </template>
