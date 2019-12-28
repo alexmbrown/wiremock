@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    h1 ROOT
+    h1 SERVER
     NuxtChild
 </template>
 

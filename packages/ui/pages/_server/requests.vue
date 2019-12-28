@@ -1,7 +1,5 @@
 <template lang="pug">
-  div
-    h1 ROOT
-    NuxtChild
+  h1 REQUESTS
 </template>
 
 <script>
