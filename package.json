@@ -1,0 +1,31 @@
+{
+  "name": "wiremock",
+  "version": "1.0.0",
+  "description": "Wiremock ui & web client",
+  "main": "index.js",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexmbrown/wiremock.git"
+  },
+  "keywords": [
+    "WireMock",
+    "Mock",
+    "Vue"
+  ],
+  "author": "Alex Brown <alexmb522@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexmbrown/wiremock/issues"
+  },
+  "homepage": "https://github.com/alexmbrown/wiremock#readme",
+  "devDependencies": {
+    "lerna": "^3.15.0"
+  }
+}
