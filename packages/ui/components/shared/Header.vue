@@ -7,9 +7,11 @@
         b-navbar-item(v-for="(server, index) in servers" :key="server.id" @click="onServerSelect(index)")
           Server(:server="server")
         hr.dropdown-divider
-        b-navbar-item
+        b-navbar-item(@click="showServerModal = true")
           b-icon(icon="plus")
           | Add New Server
+      b-modal(:active.sync="showServerModal" has-modal-card trap-focus)
+            AddServerModal(@close="showServerModal = false")
     template(slot="end" v-if="server")
       n-link.navbar-item(:to="`/${server}/mappings`") Mappings
       n-link.navbar-item(:to="`/${server}/requests`") Requests
@@ -17,10 +19,12 @@
 </template>
 
 <script>
+import AddServerModal from '~/components/server/AddServerModal'
 import Server from '~/components/shared/Server'
 
 export default {
   components: {
+    AddServerModal,
     Server
   },
   data() {
@@ -39,10 +43,14 @@ export default {
           address: 'http://localhost:10000',
           isHealthy: false
         }
-      ]
+      ],
+      showServerModal: false
     }
   },
   methods: {
+    close() {
+      console.log('test')
+    },
     onServerSelect(id) {
       this.server = id
     }

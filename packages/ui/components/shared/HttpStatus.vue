@@ -1,5 +1,5 @@
 <template lang="pug">
-span(:class="statusIndicator()") {{status}} - {{statusText()}}
+span(:class="statusIndicator") {{status}} - {{statusText}}
 </template>
 
 <script>
@@ -12,7 +12,7 @@ export default {
       default: null
     }
   },
-  methods: {
+  computed: {
     statusIndicator() {
       const status = this.$props.status
       if (status >= 400) {
@@ -22,6 +22,7 @@ export default {
       } else if (status >= 200) {
         return 'has-background-success'
       }
+      return 'has-background-gray'
     },
     statusText() {
       return statuses[this.$props.status]
@@ -35,6 +36,5 @@ span {
   padding: 0.1rem 0.2rem;
   border-radius: 0.2rem;
   color: #fff;
-  background: gray;
 }
 </style>

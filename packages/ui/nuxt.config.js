@@ -29,7 +29,9 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: [
+    '~/plugins/vee-validate'
+  ],
   /*
    ** Nuxt.js dev-modules
    */
@@ -51,7 +53,8 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {}
+    extend(config, ctx) {},
+    vendor: ['vee-validate']
   },
   router: {
     linkActiveClass: 'is-active'
