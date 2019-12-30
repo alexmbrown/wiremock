@@ -11,22 +11,9 @@ export default {
   components: {
     Mapping
   },
-  data() {
-    return {
-      mappings: [
-        {
-          id: 123,
-          path: 'TEST 1',
-          method: 'GET',
-          status: 200
-        },
-        {
-          id: 456,
-          path: 'TEST 2',
-          method: 'GET',
-          status: 400
-        }
-      ]
+  computed: {
+    mappings() {
+      return this.$store.state.mappings
     }
   }
 }
@@ -34,6 +21,7 @@ export default {
 
 <style scoped lang="scss">
 ul {
+  overflow-y: auto;
   width: 25rem;
   box-shadow: 0.125rem 0 0.25rem rgba(0, 0, 0, 0.075) !important;
 }

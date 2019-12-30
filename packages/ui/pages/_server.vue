@@ -1,25 +1,7 @@
 <template lang="pug">
-  section
-    Mappings
-    NuxtChild
+NuxtChild
 </template>
 
 <script>
-import Mappings from '~/components/server/Mappings'
-
-export default {
-  components: {
-    Mappings
-  }
-}
+export default {}
 </script>
-
-<style lang="scss">
-section {
-  display: flex;
-  height: calc(100% - 64px);
-}
-.columns {
-  align-items: stretch;
-}
-</style>

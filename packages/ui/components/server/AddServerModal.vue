@@ -13,6 +13,7 @@
 <script>
 import ServerInfoForm from '~/components/server/ServerInfoForm'
 import { connect } from 'wiremock-client'
+import * as uuid from 'uuid/v4'
 
 export default {
   components: {
@@ -22,7 +23,8 @@ export default {
     async addServer() {
       if (await this.$refs.observer.validate()) {
         const server = this.$refs.form.value
-        server.client = connect(server.host, server.port)
+        server.id = uuid()
+        server.client = connect(server.protocol, server.host, server.port)
         this.$store.commit('addServer', server)
         this.$emit('close')
       }

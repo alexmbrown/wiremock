@@ -7,7 +7,7 @@
       b-navbar-dropdown(v-if="servers.length > 0")
         b-navbar-item(slot="label")
           Server(:server="servers[0]")
-        b-navbar-item(v-for="(server, index) in servers" :key="server.id" @click="onServerSelect(index)")
+        b-navbar-item(v-for="server in servers" :key="server.id" @click="onServerSelect(server.id)")
           Server(:server="server")
         hr.dropdown-divider
         b-navbar-item(@click="showServerModal = true")
@@ -44,6 +44,7 @@ export default {
   methods: {
     onServerSelect(id) {
       this.server = id
+      this.$router.push(`/${id}/mappings`)
     }
   }
 }

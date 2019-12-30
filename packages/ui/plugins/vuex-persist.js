@@ -6,12 +6,14 @@ export default ({ store }) => {
     new VuexPersistence({
       // strictMode: true,
       restoreState: (key, storage) => {
-        const state = JSON.parse(storage[key])
-        state.servers = state.servers.map((server) => {
-          server.client = connect(server.protocol, server.host, server.port)
-          return server
-        })
-        return state
+        if (storage[key]) {
+          const state = JSON.parse(storage[key])
+          state.servers = state.servers.map((server) => {
+            server.client = connect(server.protocol, server.host, server.port)
+            return server
+          })
+          return state
+        }
       }
     }).plugin(store)
   })
