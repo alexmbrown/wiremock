@@ -41,10 +41,17 @@ export default {
       return this.$store.state.servers
     }
   },
+  created() {
+    const serverId = this.$route.params.serverId
+    if (serverId) {
+      this.server = this.$store.getters.getServer(serverId)
+      console.log(this.server)
+    }
+  },
   methods: {
-    onServerSelect(id) {
-      this.server = id
-      this.$router.push(`/${id}/mappings`)
+    onServerSelect(serverId) {
+      this.server = this.$store.getters.getServer(serverId)
+      this.$router.push(`/${serverId}/mappings`)
     }
   }
 }

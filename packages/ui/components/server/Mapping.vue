@@ -1,5 +1,5 @@
 <template lang="pug">
-  n-link(:to="'mapping/' + mapping.id")
+  n-link(:to="`/${serverId}/mappings/${mapping.id}`")
     strong.has-text-grey-dark.is-size-6 {{path}}
     .is-clearfix
       .is-pulled-left
@@ -24,6 +24,9 @@ export default {
     }
   },
   computed: {
+    serverId() {
+      return this.$route.params.serverId
+    },
     path() {
       const request = this.mapping.request
       return (
