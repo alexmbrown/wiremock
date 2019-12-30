@@ -1,5 +1,5 @@
 <template lang="pug">
-  div
+  n-link(:to="`/${server.id}/mappings`")
     .is-size-4.has-text-grey-dark
         .indicator(:class="healthIndicator")
         | {{server.name}}

@@ -4,10 +4,10 @@
       b-navbar-item(v-if="servers.length <= 0" @click="showServerModal = true")
         b-icon(icon="plus")
         | Add New Server
-      b-navbar-dropdown(v-if="servers.length > 0")
+      b-navbar-dropdown(v-if="selectedServer")
         b-navbar-item(slot="label")
-          Server(:server="servers[0]")
-        b-navbar-item(v-for="server in servers" :key="server.id" @click="onServerSelect(server.id)")
+          Server(:server="selectedServer")
+        b-navbar-item(v-for="server in servers" :key="server.id")
           Server(:server="server")
         hr.dropdown-divider
         b-navbar-item(@click="showServerModal = true")
@@ -15,10 +15,10 @@
           | Add New Server
       b-modal(:active.sync="showServerModal" has-modal-card trap-focus)
             AddServerModal(@close="showServerModal = false")
-    template(slot="end" v-if="server")
-      n-link.navbar-item(:to="`/${server.id}/mappings`") Mappings
-      n-link.navbar-item(:to="`/${server.id}/requests`") Requests
-      n-link.navbar-item(:to="`/${server.id}/settings`") Settings
+    template(slot="end" v-if="selectedServer")
+      n-link.navbar-item(:to="`/${selectedServer.id}/mappings`") Mappings
+      n-link.navbar-item(:to="`/${selectedServer.id}/requests`") Requests
+      n-link.navbar-item(:to="`/${selectedServer.id}/settings`") Settings
 </template>
 
 <script>
@@ -32,25 +32,15 @@ export default {
   },
   data() {
     return {
-      server: null,
       showServerModal: false
     }
   },
   computed: {
     servers() {
       return this.$store.state.servers
-    }
-  },
-  created() {
-    const serverId = this.$route.params.serverId
-    if (serverId) {
-      this.server = this.$store.getters.getServer(serverId)
-    }
-  },
-  methods: {
-    onServerSelect(serverId) {
-      this.server = this.$store.getters.getServer(serverId)
-      this.$router.push(`/${serverId}/mappings`)
+    },
+    selectedServer() {
+      return this.$store.state.selectedServer
     }
   }
 }

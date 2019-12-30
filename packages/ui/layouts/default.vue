@@ -1,15 +1,7 @@
 <template lang="pug">
-  div.is-full-height
-    Header
-    Nuxt
+  Nuxt
 </template>
 
 <script>
-import Header from '~/components/shared/Header'
-
-export default {
-  components: {
-    Header
-  }
-}
+export default {}
 </script>

@@ -1,5 +1,5 @@
 <template lang="pug">
-div {{request}}
+div {{mapping}}
 </template>
 
 <script>

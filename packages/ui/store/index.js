@@ -1,12 +1,16 @@
 export const state = () => ({
-  servers: [],
   mapping: null,
-  mappings: []
+  mappings: [],
+  selectedServer: null,
+  servers: []
 })
 
 export const mutations = {
   addServer(state, server) {
     state.servers.push(server)
+  },
+  selectServer(state, server) {
+    state.selectedServer = server
   },
   setMapping(state, mapping) {
     state.mapping = mapping
@@ -23,6 +27,9 @@ export const mutations = {
 }
 
 export const getters = {
+  getServers(state) {
+    return state.servers
+  },
   getServer(state) {
     return (id) => state.servers.find((server) => server.id === id)
   }

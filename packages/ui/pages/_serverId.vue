@@ -1,7 +1,21 @@
 <template lang="pug">
-NuxtChild
+  div.is-full-height
+    Header
+    NuxtChild
 </template>
 
 <script>
-export default {}
+import Header from '~/components/shared/Header'
+
+export default {
+  components: {
+    Header
+  },
+  fetch({ store, params }) {
+    const server = store.getters.getServer(params.serverId)
+    if (server) {
+      store.commit('selectServer', server)
+    }
+  }
+}
 </script>
