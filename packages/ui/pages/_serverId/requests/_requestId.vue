@@ -1,20 +1,20 @@
 <template lang="pug">
-div {{request}}
+  div {{request}}
 </template>
 
 <script>
 export default {
   computed: {
-    mapping() {
-      return this.$store.state.mapping
+    request() {
+      return this.$store.state.request
     }
   },
   async fetch({ store, params }) {
     const server = await store.getters.getServer(params.serverId)
     if (server && server.client) {
       store.commit(
-        'setMapping',
-        await server.client.getStubMapping(params.mappingId)
+        'setRequest',
+        await server.client.getRequest(params.requestId)
       )
     }
   }

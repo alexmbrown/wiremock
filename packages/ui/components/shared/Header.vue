@@ -16,9 +16,9 @@
       b-modal(:active.sync="showServerModal" has-modal-card trap-focus)
             AddServerModal(@close="showServerModal = false")
     template(slot="end" v-if="server")
-      n-link.navbar-item(:to="`/${server}/mappings`") Mappings
-      n-link.navbar-item(:to="`/${server}/requests`") Requests
-      n-link.navbar-item(:to="`/${server}/settings`") Settings
+      n-link.navbar-item(:to="`/${server.id}/mappings`") Mappings
+      n-link.navbar-item(:to="`/${server.id}/requests`") Requests
+      n-link.navbar-item(:to="`/${server.id}/settings`") Settings
 </template>
 
 <script>
@@ -45,7 +45,6 @@ export default {
     const serverId = this.$route.params.serverId
     if (serverId) {
       this.server = this.$store.getters.getServer(serverId)
-      console.log(this.server)
     }
   },
   methods: {

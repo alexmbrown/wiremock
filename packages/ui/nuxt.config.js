@@ -30,6 +30,7 @@ export default {
    ** Plugins to load before mounting the App
    */
   plugins: [
+    { src: '~/plugins/vue-moment' },
     { src: '~/plugins/vee-validate' },
     { src: '~/plugins/vuex-persist', ssr: false }
   ],

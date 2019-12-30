@@ -13,6 +13,12 @@ export const mutations = {
   },
   setMappings(state, mappings) {
     state.mappings = mappings
+  },
+  setRequest(state, request) {
+    state.request = request
+  },
+  setRequests(state, requests) {
+    state.requests = requests
   }
 }
 
