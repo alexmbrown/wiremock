@@ -1,7 +1,10 @@
 <template lang="pug">
   b-navbar.is-light.has-shadow
     template(slot="start")
-      b-navbar-dropdown
+      b-navbar-item(v-if="servers.length <= 0" @click="showServerModal = true")
+        b-icon(icon="plus")
+        | Add New Server
+      b-navbar-dropdown(v-if="servers.length > 0")
         b-navbar-item(slot="label")
           Server(:server="servers[0]")
         b-navbar-item(v-for="(server, index) in servers" :key="server.id" @click="onServerSelect(index)")
@@ -30,27 +33,15 @@ export default {
   data() {
     return {
       server: null,
-      servers: [
-        {
-          id: 123,
-          name: 'Server 1',
-          address: 'http://localhost:8080',
-          isHealthy: true
-        },
-        {
-          id: 456,
-          name: 'Server 2',
-          address: 'http://localhost:10000',
-          isHealthy: false
-        }
-      ],
       showServerModal: false
     }
   },
+  computed: {
+    servers() {
+      return this.$store.state.servers
+    }
+  },
   methods: {
-    close() {
-      console.log('test')
-    },
     onServerSelect(id) {
       this.server = id
     }

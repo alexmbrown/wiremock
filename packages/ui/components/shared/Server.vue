@@ -3,7 +3,7 @@
     .is-size-4.has-text-grey-dark
         .indicator(:class="healthIndicator")
         | {{server.name}}
-    .has-text-grey.is-size-7 {{server.address}}
+    .has-text-grey.is-size-7 {{server.protocol}}://{{server.host}}:{{server.port}}
 </template>
 
 <script>
@@ -14,16 +14,19 @@ export default {
       default: null
     }
   },
-  computed: {
-    healthIndicator() {
-      const server = this.$props.server
-      if (server) {
-        if (server.isHealthy) {
-          return 'has-background-success'
-        }
-        return 'has-background-danger'
+  data() {
+    return {
+      healthIndicator: 'has-background-grey-light'
+    }
+  },
+  async created() {
+    const server = this.$props.server
+    if (server && server.client && server.client.healthcheck) {
+      if (await server.client.healthcheck()) {
+        this.healthIndicator = 'has-background-success'
+      } else {
+        this.healthIndicator = 'has-background-danger'
       }
-      return 'has-background-grey-light'
     }
   }
 }

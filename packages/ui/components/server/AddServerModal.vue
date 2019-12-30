@@ -1,7 +1,7 @@
 <template lang="pug">
     .modal-card
       header.modal-card-head
-        p.modal-card-title Title
+        p.modal-card-title Add New Server
       section.modal-card-body
         validation-observer(slim ref="observer")
           ServerInfoForm(ref="form")
@@ -12,6 +12,7 @@
 
 <script>
 import ServerInfoForm from '~/components/server/ServerInfoForm'
+import { connect } from 'wiremock-client'
 
 export default {
   components: {
@@ -20,7 +21,9 @@ export default {
   methods: {
     async addServer() {
       if (await this.$refs.observer.validate()) {
-        console.log(this.$refs.form.value)
+        const server = this.$refs.form.value
+        server.client = connect(server.host, server.port)
+        this.$store.commit('addServer', server)
         this.$emit('close')
       }
     }
