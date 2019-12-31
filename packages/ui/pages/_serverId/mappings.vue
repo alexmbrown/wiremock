@@ -2,12 +2,12 @@
   section
     ul.has-background-white-bis
       li(v-for="(mapping, index) in mappings" :key="mapping.id")  
-          Mapping(:mapping="mapping")
+        Mapping(:mapping="mapping")
     NuxtChild
 </template>
 
 <script>
-import Mapping from '~/components/server/Mapping'
+import Mapping from '~/components/server/mappings/Mapping'
 
 export default {
   components: {
